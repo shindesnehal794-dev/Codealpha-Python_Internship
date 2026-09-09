@@ -1,1 +1,21 @@
+# Hardcoded stock prices
+prices = {"AAPL": 180, "TSLA": 250}
 
+# User input for stock name and quantity
+stock = input("Enter stock name (e.g., AAPL, TSLA): ").upper()
+quantity = int(input("Enter quantity: "))
+
+# Calculate total investment value
+if stock in prices:
+    total_value = prices[stock] * quantity
+    print(f"\nTotal Investment Value: ${total_value}")
+
+    # Save the result in a .txt file
+    with open("portfolio.txt", "w") as file:
+        file.write(f"Stock: {stock}\n")
+        file.write(f"Quantity: {quantity}\n")
+        file.write(f"Total Value: ${total_value}\n")
+
+    print("Result saved to portfolio.txt")
+else:
+    print("Stock not found in prices dictionary.")
